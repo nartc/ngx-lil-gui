@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
         <ngx-lil-gui-controller
           property="justifyContent"
           [controllerConfig]="{
-            minOrCollection: ['center', 'flex-start', 'flex-end']
+            collection: ['center', 'flex-start', 'flex-end']
           }"
         ></ngx-lil-gui-controller>
       </ngx-lil-gui>
