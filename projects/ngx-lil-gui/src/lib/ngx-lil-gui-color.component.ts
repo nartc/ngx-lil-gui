@@ -29,6 +29,7 @@ export class NgxLilGuiColor implements OnInit, OnDestroy {
   @Output() change = new EventEmitter<NgxLilGuiControllerChange>();
   @Output() finishChange = new EventEmitter<NgxLilGuiControllerFinishChange>();
   @Output() colorReady = new EventEmitter<ColorController>();
+  @Output() preAdd = new EventEmitter<void>();
 
   #colorController?: ColorController;
 
@@ -43,6 +44,8 @@ export class NgxLilGuiColor implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.preAdd.emit();
+
     this.#colorController = this.parentGui.addColor(
       this.property,
       this.colorConfig
