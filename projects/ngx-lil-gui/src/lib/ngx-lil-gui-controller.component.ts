@@ -29,6 +29,7 @@ export class NgxLilGuiController implements OnInit, OnDestroy {
   @Output() change = new EventEmitter<NgxLilGuiControllerChange>();
   @Output() finishChange = new EventEmitter<NgxLilGuiControllerFinishChange>();
   @Output() controllerReady = new EventEmitter<Controller>();
+  @Output() preAdd = new EventEmitter<void>();
 
   #controller?: Controller;
 
@@ -41,6 +42,8 @@ export class NgxLilGuiController implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.preAdd.emit();
+
     this.#controller = this.parentGui.addController(
       this.property,
       this.controllerConfig
