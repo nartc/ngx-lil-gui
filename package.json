@@ -10,7 +10,7 @@
     "contributors:add": "all-contributors add",
     "release": "dotenv release-it --",
     "copy-readme": "shx cp README.md projects/ngx-lil-gui",
-    "publish": "cd dist/ngrx-slice && npm publish"
+    "publish": "cd dist/ngx-lil-gui && npm publish"
   },
   "private": true,
   "dependencies": {
