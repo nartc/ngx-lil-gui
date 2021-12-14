@@ -1,3 +1,10 @@
+### [1.0.1](https://github.com/nartc/ngx-lil-gui/compare/1.0.0...1.0.1) (2021-12-14)
+
+
+### Documentations
+
+* adjust demo ([9ed222a](https://github.com/nartc/ngx-lil-gui/commit/9ed222a3a9e3ac9efb503cc16719382e648acfd3))
+
 ## 1.0.0 (2021-12-14)
 
 
