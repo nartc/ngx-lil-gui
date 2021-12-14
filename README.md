@@ -1,33 +1,77 @@
-# NgxLilGui
+# ngx-lil-gui
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
+A [lil-gui](https://lil-gui.georgealways.com/) wrapper for [Angular](https://angular.io)
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    npm install ngx-lil-gui lil-gui
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Add `NgxLilGuiModule` to your module imports which will expose 3 components
 
-## Build
+```ts
+@NgModule({
+  imports: [NgxLilGuiModule],
+})
+export class SomeModule {}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### `ngx-lil-gui`
 
-## Running unit tests
+This wraps a [`GUI`](https://lil-gui.georgealways.com/#GUI) instance. There are 3 ways to use `ngx-lil-gui`:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. `ngx-lil-gui`: This acts as a grouping folder with no **immediate** controllers underneath it.
+2. `ngx-lil-gui[config]`: You can pass a `NgxLilGuiConfig` object to the `ngx-lil-gui` component and the controllers will be built based on the config.
+3. `ngx-lil-gui[object]`: Build the GUI declaratively on the template. `[object]` is the object that this GUI controls.
 
-## Running end-to-end tests
+#### Nested GUI
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+You can nest `ngx-lil-gui` and it will create a folder structure for you.
 
-## Further help
+```html
+<div #divElement>
+  <span #spanElement></span>
+</div>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<ngx-lil-gui title="Group">
+  <ngx-lil-gui title="DIV" [object]="divElement.style"></ngx-lil-gui>
+  <ngx-lil-gui title="SPAN" [object]="spanElement.style"></ngx-lil-gui>
+</ngx-lil-gui>
+```
+
+### `ngx-lil-gui-controller`
+
+This wraps a [`Controller`](https://lil-gui.georgealways.com/#Controller).
+
+```html
+<div #divElement></div>
+
+<ngx-lil-gui title="DIV" [object]="divElement.style">
+  <ngx-lil-gui-controller
+    property="display"
+    [controllerConfig]="{collection: ['block', 'flex', 'inline-flex']}"
+  ></ngx-lil-gui-controller>
+</ngx-lil-gui>
+```
+
+### `ngx-lil-gui-color`
+
+This wraps a [`Controller`](https://lil-gui.georgealways.com/#Controller) as well. It will display a color picker.
+
+```html
+<div #divElement></div>
+
+<ngx-lil-gui title="DIV" [object]="divElement.style">
+  <ngx-lil-gui-color property="backgroundColor"></ngx-lil-gui-color>
+</ngx-lil-gui>
+```
 
 ## Contributors ✨
 
