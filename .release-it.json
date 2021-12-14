@@ -26,10 +26,7 @@
     },
     "@release-it/bumper": {
       "out": [
-        "packages/cannon/package*.json",
-        "packages/core/package*.json",
-        "packages/postprocessing/package*.json",
-        "packages/soba/package*.json"
+        "projects/**/package*.json"
       ]
     }
   },

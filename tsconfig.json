@@ -11,6 +11,13 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "ngx-lil-gui": [
+        "projects/ngx-lil-gui/src/public-api",
+        "dist/ngx-lil-gui/ngx-lil-gui",
+        "dist/ngx-lil-gui"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

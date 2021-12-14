@@ -1,0 +1,24 @@
+{
+  "name": "ngx-lil-gui",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "lil-gui",
+    "angular"
+  ],
+  "author": {
+    "name": "Chau Tran"
+  },
+  "license": "MIT",
+  "description": "Lil-GUI wrapper for Angular",
+  "peerDependencies": {
+    "@angular/common": "^13.1.0",
+    "@angular/core": "^13.1.0",
+    "lil-gui": "~0.15.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
