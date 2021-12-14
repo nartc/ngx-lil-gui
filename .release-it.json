@@ -41,6 +41,11 @@
     "releaseName": "Release ${version}"
   },
   "hooks": {
+    "before:init": [
+      "yarn copy-readme",
+      "git add .",
+      "git commit --amend --no-edit"
+    ],
     "after:bump": "yarn build"
   }
 }

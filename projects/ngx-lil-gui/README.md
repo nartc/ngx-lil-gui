@@ -1,24 +1,94 @@
-# NgxLilGui
+# ngx-lil-gui
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0.
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-## Code scaffolding
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
-Run `ng generate component component-name --project ngx-lil-gui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-lil-gui`.
-> Note: Don't forget to add `--project ngx-lil-gui` or else it will be added to the default project in your `angular.json` file. 
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## Build
+A [lil-gui](https://lil-gui.georgealways.com/) wrapper for [Angular](https://angular.io)
 
-Run `ng build ngx-lil-gui` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Publishing
+    npm install ngx-lil-gui lil-gui
 
-After building your library with `ng build ngx-lil-gui`, go to the dist folder `cd dist/ngx-lil-gui` and run `npm publish`.
+## Usage
 
-## Running unit tests
+Add `NgxLilGuiModule` to your module imports which will expose 3 components
 
-Run `ng test ngx-lil-gui` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+@NgModule({
+  imports: [NgxLilGuiModule],
+})
+export class SomeModule {}
+```
 
-## Further help
+### `ngx-lil-gui`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This wraps a [`GUI`](https://lil-gui.georgealways.com/#GUI) instance. There are 3 ways to use `ngx-lil-gui`:
+
+1. `ngx-lil-gui`: This acts as a grouping folder with no **immediate** controllers underneath it.
+2. `ngx-lil-gui[config]`: You can pass a `NgxLilGuiConfig` object to the `ngx-lil-gui` component and the controllers will be built based on the config.
+3. `ngx-lil-gui[object]`: Build the GUI declaratively on the template. `[object]` is the object that this GUI controls.
+
+#### Nested GUI
+
+You can nest `ngx-lil-gui` and it will create a folder structure for you.
+
+```html
+<div #divElement>
+  <span #spanElement></span>
+</div>
+
+<ngx-lil-gui title="Group">
+  <ngx-lil-gui title="DIV" [object]="divElement.style"></ngx-lil-gui>
+  <ngx-lil-gui title="SPAN" [object]="spanElement.style"></ngx-lil-gui>
+</ngx-lil-gui>
+```
+
+### `ngx-lil-gui-controller`
+
+This wraps a [`Controller`](https://lil-gui.georgealways.com/#Controller).
+
+```html
+<div #divElement></div>
+
+<ngx-lil-gui title="DIV" [object]="divElement.style">
+  <ngx-lil-gui-controller
+    property="display"
+    [controllerConfig]="{collection: ['block', 'flex', 'inline-flex']}"
+  ></ngx-lil-gui-controller>
+</ngx-lil-gui>
+```
+
+### `ngx-lil-gui-color`
+
+This wraps a [`Controller`](https://lil-gui.georgealways.com/#Controller) as well. It will display a color picker.
+
+```html
+<div #divElement></div>
+
+<ngx-lil-gui title="DIV" [object]="divElement.style">
+  <ngx-lil-gui-color property="backgroundColor"></ngx-lil-gui-color>
+</ngx-lil-gui>
+```
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://nartc.me/"><img src="https://avatars.githubusercontent.com/u/25516557?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chau Tran</b></sub></a><br /><a href="https://github.com/nartc/ngx-lil-gui/commits?author=nartc" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
