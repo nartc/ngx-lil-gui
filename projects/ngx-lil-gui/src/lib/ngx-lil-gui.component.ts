@@ -10,9 +10,9 @@ import {
   OnInit,
   Optional,
   Output,
-  SkipSelf,
-} from '@angular/core';
-import GUI, { ColorController, Controller } from 'lil-gui';
+  SkipSelf
+} from "@angular/core";
+import GUI, { ColorController, Controller } from "lil-gui";
 import {
   AnyRecord,
   NgxLilGuiChange,
@@ -22,8 +22,8 @@ import {
   NgxLilGuiControllerConfig,
   NgxLilGuiControllerNumberConfig,
   NgxLilGuiControllerSelectConfig,
-  NgxLilGuiFinishChange,
-} from './types';
+  NgxLilGuiFinishChange
+} from "./types";
 
 @Component({
   selector: `
@@ -34,7 +34,7 @@ import {
   template: `
     <ng-content></ng-content>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxLilGui implements OnInit, OnDestroy {
   @Input() zoneless = false;
@@ -60,7 +60,8 @@ export class NgxLilGui implements OnInit, OnDestroy {
     @SkipSelf() private hostElement: ElementRef<HTMLElement>,
     @Optional() @SkipSelf() @Inject(NgxLilGui) private parentGUI: NgxLilGui,
     private ngZone: NgZone
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.run(() => {
@@ -70,7 +71,7 @@ export class NgxLilGui implements OnInit, OnDestroy {
           ? this.container
           : this.hostElement.nativeElement;
 
-      if (typeof this.container === 'boolean') {
+      if (typeof this.container === "boolean") {
         container = undefined;
       }
 
@@ -81,7 +82,7 @@ export class NgxLilGui implements OnInit, OnDestroy {
         injectStyles: this.injectStyles,
         width: this.width,
         title: this.title,
-        parent: this.self ? undefined : this.parentGUI?.gui || undefined,
+        parent: this.self ? undefined : this.parentGUI?.gui || undefined
       });
 
       this.#setupEvents();
@@ -104,7 +105,7 @@ export class NgxLilGui implements OnInit, OnDestroy {
   ): Controller | undefined {
     return this.run(() => {
       if (this.object) {
-        const [, , ...config] = this.#extractControllerConfig(controllerConfig);
+        const [, , ...config] = extractControllerConfig(controllerConfig);
         return this.gui.add(this.object, property, ...config);
       }
       return undefined;
@@ -161,7 +162,7 @@ export class NgxLilGui implements OnInit, OnDestroy {
       controllers || {}
     )) {
       const [onChange, onFinishChange, ...config] =
-        this.#extractControllerConfig(controllerValue);
+        extractControllerConfig(controllerValue);
       const controller = gui.add(object, controllerKey, ...config);
       if (onChange) {
         controller.onChange((value: any) => {
@@ -197,36 +198,36 @@ export class NgxLilGui implements OnInit, OnDestroy {
       this.#buildGUI(folderConfig, folder);
     }
   }
+}
 
-  #extractControllerConfig(
-    controllerConfig?: NgxLilGuiControllerConfig[string]
-  ): [
-    ((arg: NgxLilGuiControllerChange) => void)?,
-    ((arg: NgxLilGuiControllerChange) => void)?,
+function extractControllerConfig(
+  controllerConfig?: NgxLilGuiControllerConfig[string]
+): [
+    ((arg: NgxLilGuiControllerChange) => void) | undefined,
+    ((arg: NgxLilGuiControllerChange) => void) | undefined,
+  (number | string[] | AnyRecord)?,
+  number?,
+  number?
+] {
+  const config: [
+      ((arg: NgxLilGuiControllerChange) => void) | undefined,
+      ((arg: NgxLilGuiControllerChange) => void) | undefined,
     (number | string[] | AnyRecord)?,
     number?,
     number?
-  ] {
-    const config: [
-      ((arg: NgxLilGuiControllerChange) => void)?,
-      ((arg: NgxLilGuiControllerChange) => void)?,
-      (number | string[] | AnyRecord)?,
-      number?,
-      number?
-    ] = [];
+  ] = [undefined, undefined];
 
-    if (controllerConfig) {
-      config[0] = controllerConfig.onChange;
-      config[1] = controllerConfig.onFinishChange;
+  if (controllerConfig) {
+    config[0] = controllerConfig.onChange;
+    config[1] = controllerConfig.onFinishChange;
 
-      config[2] =
-        (controllerConfig as NgxLilGuiControllerSelectConfig).collection ||
-        (controllerConfig as NgxLilGuiControllerNumberConfig).min;
+    config[2] =
+      (controllerConfig as NgxLilGuiControllerSelectConfig).collection ||
+      (controllerConfig as NgxLilGuiControllerNumberConfig).min;
 
-      config[3] = (controllerConfig as NgxLilGuiControllerNumberConfig).max;
-      config[4] = (controllerConfig as NgxLilGuiControllerNumberConfig).step;
-    }
-
-    return config;
+    config[3] = (controllerConfig as NgxLilGuiControllerNumberConfig).max;
+    config[4] = (controllerConfig as NgxLilGuiControllerNumberConfig).step;
   }
+
+  return config;
 }
