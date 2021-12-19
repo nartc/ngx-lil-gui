@@ -1,3 +1,5 @@
+### [1.1.1](https://github.com/nartc/ngx-lil-gui/compare/1.1.0...1.1.1) (2021-12-19)
+
 ## [1.1.0](https://github.com/nartc/ngx-lil-gui/compare/1.0.1...1.1.0) (2021-12-14)
 
 
