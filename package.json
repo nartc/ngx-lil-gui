@@ -22,7 +22,7 @@
     "@angular/platform-browser": "~13.1.1",
     "@angular/platform-browser-dynamic": "~13.1.1",
     "@angular/router": "~13.1.1",
-    "lil-gui": "~0.15.0",
+    "lil-gui": "~0.16.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
@@ -33,7 +33,7 @@
     "@angular/compiler-cli": "~13.1.1",
     "@release-it/bumper": "3.0.1",
     "@release-it/conventional-changelog": "3.3.0",
-    "@types/jasmine": "~3.10.2",
+    "@types/jasmine": "~3.10.3",
     "@types/node": "^12.11.1",
     "dotenv-cli": "4.1.1",
     "jasmine-core": "~3.10.1",
