@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/nartc/ngx-lil-gui/compare/1.1.1...1.2.0) (2022-01-06)
+
+
+### Features
+
+* update lil-gui ([5664276](https://github.com/nartc/ngx-lil-gui/commit/56642765f997706b58eaa5b12465c0aa404cf80c))
+
 ### [1.1.1](https://github.com/nartc/ngx-lil-gui/compare/1.1.0...1.1.1) (2021-12-19)
 
 ## [1.1.0](https://github.com/nartc/ngx-lil-gui/compare/1.0.1...1.1.0) (2021-12-14)
